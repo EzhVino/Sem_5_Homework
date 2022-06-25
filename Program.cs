@@ -71,3 +71,46 @@ for (int i = 0; i < array.Length; i += 2)
 
 Console.WriteLine();
 Console.WriteLine("Сумма чисел на нечетных позициях в массиве = " + sum);
+
+Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива
+
+int[] CreateRandomArray(int size, int a, int b)
+{
+    int[] array = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        array[i] = new Random().Next(a, b);
+    }
+    return array;
+}
+
+void ShowArray(int[] collection)
+{
+    for (int i = 0; i < collection.Length; i++)
+    {
+        Console.Write(collection[i] + " ");
+    }
+}
+
+Console.WriteLine("Задайте размер массива:");
+int length = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Задайте диапазон массива от минимального числа:");
+int minimum = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("к максимальному:");
+int maximum = Convert.ToInt32(Console.ReadLine());
+
+int[] array = CreateRandomArray(length, minimum, maximum);
+ShowArray(array);
+
+int min = array[0];
+int max = array[0];
+for (int i = 0; i < array.Length; i++)
+ {
+    if (array[i] > max) 
+        max = array[i];
+    else if (array[i] < min) 
+        min = array[i];
+ }
+
+Console.WriteLine();
+Console.WriteLine("Разница между максимальным " + max + " и минимальным " + min + " равна " + (max-min));
