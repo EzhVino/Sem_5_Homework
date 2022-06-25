@@ -31,3 +31,43 @@ for (int i = 0; i < array.Length; i++)
 }
 Console.WriteLine();
 Console.WriteLine("Четных чисел в массиве -> " + count);
+
+// Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+
+int[] CreateRandomArray(int size, int min, int max)
+{
+    int[] array = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        array[i] = new Random().Next(min, max);
+    }
+    return array;
+}
+
+void ShowArray(int[] collection)
+{
+    for (int i = 0; i < collection.Length; i++)
+    {
+        Console.Write(collection[i] + " ");
+    }
+}
+
+
+Console.WriteLine("Задайте размер массива:");
+int length = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Задайте диапазон массива от минимального числа:");
+int minnum = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("к максимальному:");
+int maxnum = Convert.ToInt32(Console.ReadLine());
+
+int[] array = CreateRandomArray(length, minnum, maxnum);
+ShowArray(array);
+
+int sum = 0;
+for (int i = 0; i < array.Length; i += 2)
+{
+    sum = sum + array[i];
+}
+
+Console.WriteLine();
+Console.WriteLine("Сумма чисел на нечетных позициях в массиве = " + sum);
