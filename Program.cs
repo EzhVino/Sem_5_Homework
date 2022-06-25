@@ -151,4 +151,48 @@ for (int i = 0; i < array.Length; i++)
         count++;
 }
 Console.WriteLine();
-Console.WriteLine("В отрезке от 10 до 99 лежат " + count + " числа");
+Console.WriteLine("В отрезке от 10 до 99 лежат " + count + " чисел");
+
+// Найдите произведение пар чисел в одномерном массиве. 
+// Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве
+
+int[] CreateRandomArray(int size, int a, int b)
+{
+    int[] array = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        array[i] = new Random().Next(a, b);
+    }
+    return array;
+}
+
+void ShowArray(int[] collection)
+{
+    for (int i = 0; i < collection.Length; i++)
+    {
+        Console.Write(collection[i] + " ");
+    }
+}
+
+Console.WriteLine("Задайте размер массива:");
+int length = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Задайте диапазон массива от минимального числа:");
+int minimum = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("к максимальному:");
+int maximum = Convert.ToInt32(Console.ReadLine());
+
+int[] array = CreateRandomArray(length, minimum, maximum);
+ShowArray(array);
+Console.WriteLine();
+Console.Write("Произведение пар -> ");
+
+int result = 0;
+int i = 0;
+while (i < array.Length / 2)
+{
+    result = array[i] * array[array.Length - 1 - i];
+    Console.Write(result + " ");
+    i++;
+}
+if (array.Length % 2 != 0)
+    Console.Write(array[i]);
